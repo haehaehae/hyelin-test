@@ -1,0 +1,10 @@
+{
+  "name": "paper-recipe",
+  "private": true,
+  "type": "module",
+  "description": "Buildless origami recipe studio using OrigamiSimulator and FOLD",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "dev": "python3 -m http.server 4173 --directory dist"
+  }
+}

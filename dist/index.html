@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f7f2">
+  <meta name="description" content="한 장의 종이를 새로운 모양으로. 원하는 종이접기를 찾고, 단계별 레시피와 3D 시뮬레이션으로 천천히 따라 접어보세요.">
+  <title>종이의 레시피 — 한 장에서 시작되는 작은 즐거움</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true"><defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="M5 5v14m14-14L8 12l11 7z"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M19 5v14M5 5l11 7-11 7z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M19 12a7 7 0 1 0-2 5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C9 2 2 8 5 15s16 6 15-12ZM5 20 16 9"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-11v1"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6"/></symbol>
+  </defs></svg>
+
+  <header class="site-header wrap">
+    <a class="brand" href="#" aria-label="종이의 레시피 홈"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 7h31L16 34z" fill="#c56449"/><path d="m4 7 19 11-7 16z" fill="#e5a183"/><path d="m23 18 12-11-8 25z" fill="#8d4939"/></svg><span>종이의 레시피<small>PAPER RECIPE</small></span></a>
+    <nav aria-label="주 메뉴"><a href="#collection">레시피 둘러보기</a><a class="active" href="#studio">접기 작업실</a><button id="help-open">사용 안내 <span>↗</span></button></nav>
+    <button id="import-button" class="button-outline"><svg><use href="#i-upload"/></svg><span>내 도안 열기</span><span class="tiny">.fold</span></button>
+    <input type="file" id="fold-file" accept=".fold,application/json" hidden>
+  </header>
+
+  <main>
+    <section class="intro wrap" aria-labelledby="intro-title">
+      <div class="intro-copy"><p class="eyebrow"><span class="mini-line"></span> A LITTLE FOLD, A LITTLE JOY</p><h1 id="intro-title">한 장의 종이,<br>무엇이 <em>될까요?</em></h1><p class="intro-description">만들고 싶은 것을 찾아보세요.<br>접는 순간마다, 종이가 새로운 이야기가 됩니다.</p></div>
+      <div class="intro-art" aria-hidden="true"><div class="art-ring"></div><svg class="paper-letter" viewBox="0 0 400 280"><defs><filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#574838" flood-opacity=".12"/></filter><linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9b78e"/><stop offset="1" stop-color="#d78c63"/></linearGradient></defs><g filter="url(#shadow)" transform="rotate(-13 200 140)"><path d="m70 112 133-87 130 87-130 120z" fill="#ecc7a3"/><path d="M70 112h263v133H70z" fill="url(#paper)"/><path d="m70 112 131 91 132-91" fill="#f5d7b5"/><path d="m70 245 99-88 32 23 33-23 99 88z" fill="#e6a57a"/><path d="m70 245 99-88m164 88-99-88" fill="none" stroke="#c98b65" stroke-width=".8"/><path d="m160 72 52-17 27 16-53 17z" fill="#fff8e9"/><path d="m180 64 16 6 15-9" fill="none" stroke="#c98c78" stroke-width="1.4"/></g><path d="m328 45 10 4-5 8m-8-14 4-7m-5 17-8 3" fill="none" stroke="#a4ac96" stroke-width="1.3"/></svg><span class="handwritten">마음을 접어, 전해요.</span><span class="art-caption">ONE SHEET. ENDLESS POSSIBILITIES.</span></div>
+      <div class="search-block"><form id="search-form" role="search"><svg><use href="#i-search"/></svg><input id="search-input" aria-label="만들고 싶은 종이접기" placeholder="어떤 종이접기를 해볼까요? 예: 편지봉투" autocomplete="off"><button type="submit">레시피 찾기 <svg><use href="#i-arrow"/></svg></button></form><div class="search-suggestions"><span>이런 건 어때요?</span><button data-search="편지봉투">편지봉투</button><button data-search="문접기">문접기</button><button data-search="아코디언">아코디언</button><button data-search="삼각 접기">삼각 접기</button><span class="library-note">동물부터 생활 소품까지, 20가지 모양</span></div><p id="search-message" role="status" hidden></p></div>
+    </section>
+
+    <section class="workspace wrap" id="studio" aria-labelledby="workspace-title">
+      <div class="section-heading"><div><span class="eyebrow">YOUR FOLDING TABLE</span><h2 id="workspace-title">천천히, 한 번씩 접어보세요</h2></div><span class="quiet-label"><span></span> 한 장이면 충분해요</span></div>
+      <div class="studio-grid">
+        <aside class="recipe-panel">
+          <div class="recipe-top"><span id="recipe-category" class="eyebrow"></span><span class="recipe-number" id="recipe-number">RECIPE 01</span></div>
+          <h3 id="recipe-title"></h3><p id="recipe-description" class="recipe-description"></p>
+          <div class="recipe-meta"><span><svg><use href="#i-clock"/></svg><span id="recipe-time"></span></span><span><i class="difficulty-dots">● ● ○</i><span id="recipe-level"></span></span><span id="step-count"></span></div>
+          <div class="ingredients"><span class="paper-icon">▱</span><div><strong id="recipe-paper"></strong><small id="recipe-size"></small></div><span class="ingredient-check">✓</span></div>
+          <div class="step-heading"><span>접는 순서</span><small id="step-progress">준비 / 4</small></div>
+          <ol id="recipe-steps" class="recipe-steps"></ol>
+          <div class="recipe-tip"><svg><use href="#i-leaf"/></svg><p id="recipe-tip"></p></div>
+        </aside>
+
+        <div class="simulator" id="simulator">
+          <div class="sim-toolbar"><div class="view-tabs" role="group" aria-label="보기 방식"><button class="selected" id="view-3d" aria-pressed="true">3D 접기</button><button id="view-pattern" aria-pressed="false">전개도</button></div><div class="sim-toolbar-right"><span id="engine-state" class="engine-state"><i></i>준비 중</span><button class="icon-button" id="fullscreen" aria-label="작업실 전체 화면"><svg><use href="#i-expand"/></svg></button></div></div>
+          <div class="canvas-area" id="canvas-area"><div class="stage-grid"></div><iframe id="engine-frame" title="단계별 종이접기 3D 시뮬레이션" src="engine/index.html" loading="eager"></iframe><div id="pattern-view" hidden></div><div class="stage-badge"><span class="badge-dot"></span><span id="stage-label">정사각형 한 장에서 시작</span></div><div id="stage-error" class="stage-error" hidden><svg><use href="#i-info"/></svg><p></p><button id="error-pattern">전개도로 보기</button></div><div class="camera-tools"><button id="camera-reset" class="icon-button" title="시점 초기화" aria-label="시점 초기화"><svg><use href="#i-refresh"/></svg></button><button id="camera-top" class="icon-button" title="위에서 보기" aria-label="위에서 보기">⌑</button></div><div class="canvas-hint" id="canvas-hint">드래그로 돌려보기 <span>·</span> 스크롤로 확대</div><div class="paper-colors" role="group" aria-label="종이 색상"><span>종이 색</span><button data-color="db7357" class="chosen" style="--swatch:#db7357" aria-label="살구색" aria-pressed="true"></button><button data-color="879c81" style="--swatch:#879c81" aria-label="세이지색" aria-pressed="false"></button><button data-color="bd9b59" style="--swatch:#bd9b59" aria-label="겨자색" aria-pressed="false"></button><button data-color="7c9baa" style="--swatch:#7c9baa" aria-label="하늘색" aria-pressed="false"></button></div></div>
+          <div class="playback"><div class="playback-top"><div class="transport"><button id="previous" class="icon-button" aria-label="이전 단계"><svg><use href="#i-prev"/></svg></button><button id="play" class="play-button" aria-label="전체 순서 재생"><svg><use href="#i-play"/></svg></button><button id="next" class="icon-button" aria-label="다음 단계"><svg><use href="#i-next"/></svg></button><span id="current-step-label">접을 준비</span></div><div class="playback-options"><select id="speed" aria-label="재생 속도"><option value="1">1× 속도</option><option value="0.65">느리게</option><option value="1.5">빠르게</option></select><button id="restart" class="icon-button" aria-label="처음부터 다시 접기"><svg><use href="#i-refresh"/></svg></button><button id="export-fold" class="icon-button" aria-label="현재 모양 FOLD 파일 저장"><svg><use href="#i-download"/></svg></button></div></div><div class="timeline-row"><span>시작</span><input type="range" id="timeline" min="0" max="4" value="0" step="0.01" aria-label="접기 단계 진행률"><span id="timeline-count">0 / 4</span></div></div>
+          <div class="sim-footnote"><span><svg><use href="#i-leaf"/></svg> 저부하 모드 · 동작 후 자동 일시정지</span><button id="simulation-pause">계산 멈추기</button></div>
+        </div>
+      </div>
+      <p class="simulation-note">종이 두께와 충돌은 단순화된 물리 시뮬레이션입니다. 화면은 각 단계의 접힘을 보여주며, 실제 종이는 왼쪽 설명을 따라 접어주세요.</p>
+    </section>
+
+    <section class="collection wrap" id="collection" aria-labelledby="collection-title"><div class="section-heading"><div><span class="eyebrow">SMALL THINGS, MADE BY YOU</span><h2 id="collection-title">다음 한 장은, 이런 모양으로</h2></div><span class="collection-count">모두 20개의 종이접기</span></div><div class="catalog-filters" role="group" aria-label="종이접기 분류"><button class="selected" data-filter="all" aria-pressed="true">전체 <span>20</span></button><button data-filter="animal" aria-pressed="false">동물 친구들 <span>10</span></button><button data-filter="decor" aria-pressed="false">꽃과 장식 <span>4</span></button><button data-filter="life" aria-pressed="false">생활 소품 <span>6</span></button><button data-filter="simulation" aria-pressed="false">3D로 보기 <span>3</span></button></div><p class="catalog-description">모양을 골라 접기 안내를 살펴보세요. <b>3D</b> 표시가 있는 도안은 작업실에서 직접 움직여볼 수 있어요.</p><div class="recipe-cards" id="recipe-cards"></div></section>
+    <section class="about-strip wrap"><div class="about-mark">↳</div><p>접었다 펴도 괜찮아요.<br><span>종이 한 장과 조금의 호기심이면 충분하니까요.</span></p><button id="about-open">이 작은 작업실에 대하여 <svg><use href="#i-arrow"/></svg></button></section>
+  </main>
+  <footer class="wrap"><a class="footer-wordmark" href="#">종이의 레시피<span>PAPER RECIPE</span></a><p>Built with <a href="https://github.com/amandaghassaei/OrigamiSimulator/tree/7855983" target="_blank" rel="noopener">OrigamiSimulator ↗</a> &amp; <a href="https://github.com/edemaine/fold" target="_blank" rel="noopener">FOLD ↗</a></p><button id="licenses-open">오픈소스 안내</button><span class="footer-end">MADE TO BE FOLDED.</span></footer>
+  <dialog id="info-dialog"><button id="dialog-close" class="icon-button" aria-label="안내 닫기"><svg><use href="#i-close"/></svg></button><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status" hidden></div>
+  <script src="engine/dependencies/fold.js"></script><script src="recipes.js"></script><script src="catalog.js"></script><script src="app.js"></script>
+</body>
+</html>
